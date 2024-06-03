@@ -106,17 +106,13 @@ Les insctructions d'utilisations de la fenêtre de contrôle sont spécifiées d
  
  ### Réponses aux questions 
 
-					                                            ______________
-					                                            |            |
-					                                            | 4ème étape |
-					                                            |____________| 
+### Etape 4
 					                                            
 
 Q: Comment appelle-t'on ce type de méthode et comment faut-il les déclarer ?
 
 R: La méthode utilisée pour jouer les objets multimédia ne doit pas être implémentée dans la classe de base donc elle doit etre déclarée comme abstract en utilisant le keyword virtual et mettant la fonction=0.
 
-										---------------------------
 										
 
 Q: Si vous avez fait ce qui précède comme demandé, il ne sera plus possible d'instancer des objets de la classe de base. Pourquoi ?
@@ -125,12 +121,8 @@ R: Dans les classes vidéo et image on l'implémente en ajoutant le keyword over
    Dans la classe main des erreurs vont apparaitre car on a créé un objet de type multimédia alors que cette classe est abstract donc on ne peut pas créer des objets si la classe est abstraite.
 
 
-############################################################################################################################################################################################################
 				                                                  
-				                                                    ______________
-				                                                    |            |
-				                                                    | 5ème étape |
-				                                                    |____________|
+### Etape 5
 				                                                    
 		   
 Q: Quelle est la propriété caractéristique de l'orienté objet qui permet de faire cela ? 
@@ -138,28 +130,22 @@ Q: Quelle est la propriété caractéristique de l'orienté objet qui permet de 
 R: La propriété qui permet de traiter les objets appartenant à la même classe de base de la même manière est le polymorphisme.
 
 
-										---------------------------
-										
+### Etape 6									
 
 Q: Qu'est-il spécifiquement nécessaire de faire dans le cas du C++ ? 
 
 R: Dans C++, il faut ajouter le keyword "virtual" avant la méthode dans la classe de base ce qui oblige à utiliser la méthode de la classe fille.
 
 
-										---------------------------
-										
 
 Q: Quel est le type des éléments du tableau : le tableau doit-il contenir des objets ou des pointeurs vers ces objets ? Pourquoi ? Comparer à Java. 
 
 R: Les éléments du tableau sont des pointeurs vers les objets. On ne peut pas créer un tableau contenant des objets de type multimédia parce que la classe est abstract (on ne peut pas créer des objets de cette classe). Les élements sont donc des pointeurs qui pointent vers des éléments de type video et photo qui ne sont pas abstract. Dans c++, les éléments du tableau doivent être de même type, donc les éléments doivent être des pointeurs car les pointeurs ont la même taille. De cette facon, les pointeurs peuvent pointer vers des éléments de types différents appartenant au même tableau.
 
 
-############################################################################################################################################################################################################
 
-                                                                                    ______________
-				                                                    |            |
-				                                                    | 7ème étape |
-				                                                    |____________|
+
+### Etape 7
 
 
 Q: Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier afin qu'il n'y ait pas de fuite mémoire quand on détruit les objets ?
@@ -167,7 +153,6 @@ Q: Parmi les classes précédemment écrites quelles sont celles qu'il faut modi
 R: Dans la classe Film, quand on modifie le tableau de facon à ce qu'il pointe vers un nouveau tableau, l'ancien tableau n'est pas détruit automatiquement, ce qui cause un problème de gestion de mémoire, donc il faut modifier la classe Film et mettre un delete pour détruire l'ancien pointé. De plus, quand on détruit l'objet Film, le tableau de chapitre n'est pas détruit car il est créé avec un new, donc on doit ajouter un destructeur et mettre un delete pour détruire le tableau et par suite éviter le problème de fuite de mémoire.
 
 
-										---------------------------
 
 
 Q: La copie d'objet peut également poser problème quand ils ont des variables d'instance qui sont des pointeurs. Quel est le problème et quelles sont les solutions ?
@@ -175,13 +160,7 @@ Q: La copie d'objet peut également poser problème quand ils ont des variables 
 R: Concernant la copie d'objet, quand on copie un objet Film vers un autre en utilisant l'opérateur = les deux objets vont pointer vers le même élément. Donc quand on va détruire les deux objets consécutivement, le premier objet détruit va détruire avec lui le pointé qui est le tableau de chapitres, quand le deuxième objet va être détruit, ca va causer une erreur parce qu'il essaye de détruire un tableau déjà détruit.
 Une solution c'est de définir un nouveau opérateur = qui sépare les deux objets, donc les deux pointeurs vont pointer vers deux pointés différents qui ont la même valeur.
 
-
-############################################################################################################################################################################################################
-
-  										    ______________
-				                                                    |            |
-				                                                    | 8ème étape |
-				                                                    |____________|
+### Etape 8
 
 
 Q: Le groupe ne doit pas détruire les objets quand il est détruit car un objet peut appartenir à plusieurs groupes (on verra ce point à la question suivante). On rappelle aussi que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java. 
@@ -189,12 +168,7 @@ Q: Le groupe ne doit pas détruire les objets quand il est détruit car un objet
 R: Dans c++, les éléments de la liste doivent être de même type, donc les éléments doivent être des pointeurs car les pointeurs ont la même taille. De cette facon, les pointeurs peuvent pointer vers des éléments de types différents appartenant à la même liste.
 
 
-############################################################################################################################################################################################################
-  	
-  										    ______________
-				                                                    |            |
-				                                                    | 10ème étape|
-				                                                    |____________|
+### Etape 9
 
 
 Q: Les méthodes précédentes permettent d'assurer la cohérence de la base de données car quand on crée un objet on l'ajoute à la table adéquate. Par contre, ce ne sera pas le cas si on crée un objet directement avec new (il n'appartiendra à aucune table). Comment peut-on l'interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ? 
@@ -202,19 +176,10 @@ Q: Les méthodes précédentes permettent d'assurer la cohérence de la base de 
 R: Afin d'éviter la manipulation des objets en dehors du database, on peut supprimer les opérateurs new et new[], les objets ne seront pas créés par allocation mémoire dynamique, mais on ne peut plus faire delete des objets smart pointers. On peut aussi mettre les constructeurs comme private et écrire une méthode private pour la création des smart pointers, en plus on doit mettre la classe database comme friend.
 
 
-############################################################################################################################################################################################################
-
-  										    ______________
-				                                                    |            |
-				                                                    | JAVA SWING |
-				                                                    | 1ère étape |
-				                                                    |____________|
+### Java Swing
 
 
 Q: Lancez votre programme, cliquez plusieurs fois sur les deux premiers bouton, retaillez la fenêtre. Que constate-t'on ? 
 
 R: On remarque quand on retaille la fenêtre que les boutons changent de position.
-
-
-############################################################################### Fin des réponses aux questions #############################################################################################
 
