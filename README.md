@@ -104,7 +104,7 @@ Les insctructions d'utilisations de la fenêtre de contrôle sont spécifiées d
 
 
  
- ################################################################################ Réponses aux questions #####################################################################################################
+ ### Réponses aux questions 
 
 					                                            ______________
 					                                            |            |
